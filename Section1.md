@@ -147,9 +147,45 @@ Meaning that it is not lacking an AssemblyInfo, the compiling form simply change
 App.config was very common on .NET Framework projects. But now a modern console app doesn't create App.config by default,
 because this configuration system preferably belongs to .NET Framework old model.
 
+However, it is usually a place where we want to store connection strings through the database or we may want to have some
+settings about our application. All of them, will end up there
 
 #### Back to example
 
-Under "Dependencias", we can see everything .NET is using to run this project. When we create a project with Visual Studio,
-by default it has a reference to a bunch of Assemblies that we see here, which are all part of .NET framework. So at a minimum
-Visual Studio assume we're going to use classes in system assembly or system that 
+Under "Dependencias", we can see a bunch of assemblies that te project is referencing to run this project. When we create
+a project with Visual Studio, by default it has a reference to a bunch of Assemblies that we see here, which are all part
+of .NET framework. So at a minimum Visual Studio assume we're going to use classes in system assembly or system.data to
+work with databases, and so on.
+
+And finally, we will see Program.cs. Which is where we will start writing our code.
+
+In that file, at the top we will see a bunch of `using` statements. And what this is about is, e.g.
+our project is called HelloWorld. By default, Visual Studio creates a namespace called `HelloWorld`. When we write code in
+that namespace, we have access to any class that is defined in that namespace.
+
+So if we want to use a class that is defined in a different namespace, we need to import it in our code file, and that is
+why we use the using statement. Because by default, VS is using those five using statements: System, which is where we
+have all those basic utility classes. System.Collections.Generic is used to work with Lists, Collection and so on, System.Linq
+is used to work with data, Text with text and coding, and threading for multi threading applications.
+
+We will start by just creating a simple application where we can remove all the `using` statements, we will just use cs/
+
+#### Keywords
+
+`class Program`: Every console application we create with visual studio has a class called Program. Inside `Program` we
+have a method/function called `Main` and that's the entry point to the application. So when we run our application, CLR
+executes the code inside main method and that's where everything kicks off.
+
+This method is declared as static, and as we know, methods have inputs and mostly outputs. So what goes inside parentheses
+is the input of the method which we call parameters or arguments, but in this case the default template, the main method
+has a parameter called `args` which is of the type string array.
+
+What we see before the method name is the return type, which in the `Main` is void
+
+The `Main` has to be with a capital M, otherwise CLR is not going to find this met hod as the entry point of this application.
+
+When we type `.` after a class, the autocomplete shows us the methods and attributes
+`Methods` are indicated by a purple cube. And as this first example, we are going to use `Console`'s method `WriteLine` to
+print out Hello World
+
+And run it with F5
